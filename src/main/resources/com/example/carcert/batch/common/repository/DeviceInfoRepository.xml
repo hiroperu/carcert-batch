@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- (1) -->
+<mapper namespace="com.example.carcert.batch.common.repository.DeviceInfoRepository">
+
+    <!-- (2) -->
+    <select id="cursor" resultType="com.example.carcert.batch.common.dto.DeviceInfoDto">
+        SELECT
+            id,
+            pushtoken,
+            notice_count,
+            exdate
+        FROM
+            device_info
+    </select>
+
+    <!-- (3) -->
+    <update id="updateDeviceInfo" parameterType="com.example.carcert.batch.common.dto.DeviceInfoDto">
+        UPDATE
+            device_info
+        SET
+            notice_count = #{notice_count}
+        WHERE
+            id = #{id}
+    </update>
+</mapper>
